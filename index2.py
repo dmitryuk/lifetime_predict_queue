@@ -14,5 +14,5 @@ df['cos_time'] = np.cos(2*np.pi*df.start_from_week_seconds/seconds_in_week)
 
 #df = df.drop('start_from_week_seconds', axis=1)
 
-print(wf.predict_median(df))
-#wf.print_summary()
+wf.predict_survival_function(df,conditional_after=[100]).plot()
+pyplot.show()

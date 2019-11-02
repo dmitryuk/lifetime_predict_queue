@@ -20,3 +20,5 @@ wf = WeibullAFTFitter().fit(df, "duration")
 wf.print_summary()
 file = open('model.data', 'wb')
 dump(wf, file)
+
+#wf.predict_survival_function(df,conditional_after=)
