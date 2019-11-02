@@ -1,7 +1,10 @@
 from lifelines import WeibullAFTFitter
+from lifelines import LogLogisticAFTFitter
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot
+from pickle import loads, dump
+
 
 df = pd.read_csv('data.csv')
 
@@ -12,8 +15,8 @@ df = df.drop('start_from_week_seconds', axis=1)
 #sudo apt-get install python3-tk
 pyplot.plot(df['sin_time'], df.cos_time, 'o')
 
-pyplot.show()
+#pyplot.show()
 wf = WeibullAFTFitter().fit(df, "duration")
-
-
-#wf.predict_survival_function(df)
+wf.print_summary()
+file = open('model.data', 'wb')
+dump(wf, file)
